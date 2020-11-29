@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://bank" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://bank" xmlns:intf="http://bank" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://bank" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="searchByCCN">
+    <complexType>
+     <sequence>
+      <element name="numCB" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchByCCNResponse">
+    <complexType>
+     <sequence>
+      <element name="searchByCCNReturn" type="impl:Account"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Account">
+    <sequence>
+     <element name="montant" type="xsd:int"/>
+     <element name="numCB" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <element name="faireAchat">
+    <complexType>
+     <sequence>
+      <element name="numCB" type="xsd:long"/>
+      <element name="montant" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="faireAchatResponse">
+    <complexType>
+     <sequence>
+      <element name="faireAchatReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="searchByCCNResponse">
+
+      <wsdl:part element="impl:searchByCCNResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchByCCNRequest">
+
+      <wsdl:part element="impl:searchByCCN" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="faireAchatRequest">
+
+      <wsdl:part element="impl:faireAchat" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="faireAchatResponse">
+
+      <wsdl:part element="impl:faireAchatResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BankService">
+
+      <wsdl:operation name="searchByCCN">
+
+         <wsdl:input message="impl:searchByCCNRequest" name="searchByCCNRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchByCCNResponse" name="searchByCCNResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="faireAchat">
+
+         <wsdl:input message="impl:faireAchatRequest" name="faireAchatRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:faireAchatResponse" name="faireAchatResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BankServiceSoapBinding" type="impl:BankService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="searchByCCN">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchByCCNRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchByCCNResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="faireAchat">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="faireAchatRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="faireAchatResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BankServiceService">
+
+      <wsdl:port binding="impl:BankServiceSoapBinding" name="BankService">
+
+         <wsdlsoap:address location="http://localhost:8080/BankService/services/BankService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

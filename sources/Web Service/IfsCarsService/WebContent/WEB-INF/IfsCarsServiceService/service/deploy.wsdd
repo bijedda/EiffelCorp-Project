@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from IfsCarsServiceService WSDL service -->
+
+  <service name="IfsCarsService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service"/>
+      <parameter name="wsdlServiceElement" value="IfsCarsServiceService"/>
+      <parameter name="schemaQualified" value="http://service"/>
+      <parameter name="wsdlServicePort" value="IfsCarsService"/>
+      <parameter name="className" value="service.IfsCarsService"/>
+      <parameter name="wsdlPortType" value="IfsCarsService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service" xmlns:retNS="http://service" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="purchase" qname="operNS:purchase" returnQName="retNS:purchaseReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:numCB" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://service" name="removeFromBasket" qname="operNS:removeFromBasket" soapAction="">
+        <parameter xmlns:pns="http://service" xmlns:tns="http://service" qname="pns:v" type="tns:VehicleToSale"/>
+      </operation>
+      <operation xmlns:operNS="http://service" name="addToBasket" qname="operNS:addToBasket" soapAction="">
+        <parameter xmlns:pns="http://service" xmlns:tns="http://service" qname="pns:v" type="tns:VehicleToSale"/>
+      </operation>
+      <operation xmlns:operNS="http://service" xmlns:retNS="http://service" xmlns:rtns="http://service" name="consultBasket" qname="operNS:consultBasket" returnQName="retNS:consultBasketReturn" returnType="rtns:VehicleToSale" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://service" xmlns:retNS="http://service" xmlns:rtns="http://service" name="getVehicleRentedOnce" qname="operNS:getVehicleRentedOnce" returnQName="retNS:getVehicleRentedOnceReturn" returnType="rtns:VehicleToSale" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="removeFromBasket addToBasket getVehicleRentedOnce purchase consultBasket"/>
+
+      <typeMapping xmlns:ns="http://service" qname="ns:VehicleToSale" type="java:service.VehicleToSale" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

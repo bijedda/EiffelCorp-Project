@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service" xmlns:intf="http://service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="purchase">
+    <complexType>
+     <sequence>
+      <element name="numCB" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="purchaseResponse">
+    <complexType>
+     <sequence>
+      <element name="purchaseReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeFromBasket">
+    <complexType>
+     <sequence>
+      <element name="v" type="impl:VehicleToSale"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="VehicleToSale">
+    <sequence>
+     <element name="fuelType" nillable="true" type="xsd:string"/>
+     <element name="make" nillable="true" type="xsd:string"/>
+     <element name="model" nillable="true" type="xsd:string"/>
+     <element name="nbDoors" type="xsd:int"/>
+     <element name="price" type="xsd:double"/>
+     <element name="registrationNb" nillable="true" type="xsd:string"/>
+     <element name="rented" type="xsd:boolean"/>
+     <element name="topSpeed" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <element name="removeFromBasketResponse">
+    <complexType/>
+   </element>
+   <element name="addToBasket">
+    <complexType>
+     <sequence>
+      <element name="v" type="impl:VehicleToSale"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addToBasketResponse">
+    <complexType/>
+   </element>
+   <element name="consultBasket">
+    <complexType/>
+   </element>
+   <element name="consultBasketResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="consultBasketReturn" type="impl:VehicleToSale"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getVehicleRentedOnce">
+    <complexType/>
+   </element>
+   <element name="getVehicleRentedOnceResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getVehicleRentedOnceReturn" type="impl:VehicleToSale"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addToBasketRequest">
+
+      <wsdl:part element="impl:addToBasket" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeFromBasketResponse">
+
+      <wsdl:part element="impl:removeFromBasketResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getVehicleRentedOnceRequest">
+
+      <wsdl:part element="impl:getVehicleRentedOnce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getVehicleRentedOnceResponse">
+
+      <wsdl:part element="impl:getVehicleRentedOnceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeFromBasketRequest">
+
+      <wsdl:part element="impl:removeFromBasket" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="purchaseRequest">
+
+      <wsdl:part element="impl:purchase" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultBasketResponse">
+
+      <wsdl:part element="impl:consultBasketResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="purchaseResponse">
+
+      <wsdl:part element="impl:purchaseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addToBasketResponse">
+
+      <wsdl:part element="impl:addToBasketResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultBasketRequest">
+
+      <wsdl:part element="impl:consultBasket" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IfsCarsService">
+
+      <wsdl:operation name="purchase">
+
+         <wsdl:input message="impl:purchaseRequest" name="purchaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:purchaseResponse" name="purchaseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeFromBasket">
+
+         <wsdl:input message="impl:removeFromBasketRequest" name="removeFromBasketRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:removeFromBasketResponse" name="removeFromBasketResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addToBasket">
+
+         <wsdl:input message="impl:addToBasketRequest" name="addToBasketRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addToBasketResponse" name="addToBasketResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultBasket">
+
+         <wsdl:input message="impl:consultBasketRequest" name="consultBasketRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultBasketResponse" name="consultBasketResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getVehicleRentedOnce">
+
+         <wsdl:input message="impl:getVehicleRentedOnceRequest" name="getVehicleRentedOnceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getVehicleRentedOnceResponse" name="getVehicleRentedOnceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="IfsCarsServiceSoapBinding" type="impl:IfsCarsService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="purchase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="purchaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="purchaseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeFromBasket">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeFromBasketRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeFromBasketResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addToBasket">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addToBasketRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addToBasketResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultBasket">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultBasketRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultBasketResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getVehicleRentedOnce">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getVehicleRentedOnceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getVehicleRentedOnceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="IfsCarsServiceService">
+
+      <wsdl:port binding="impl:IfsCarsServiceSoapBinding" name="IfsCarsService">
+
+         <wsdlsoap:address location="http://localhost:8080/IfsCarsService/services/IfsCarsService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

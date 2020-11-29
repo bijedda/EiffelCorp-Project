@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0"
+	prefWidth="1380.0" xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.FeedbackController">
+	<children>
+		<AnchorPane layoutX="703.0" prefHeight="714.0"
+			prefWidth="677.0" style="-fx-background-color: white;" />
+		<AnchorPane prefHeight="720.0" prefWidth="701.0"
+			style="-fx-background-color: #0099ff;" />
+		<AnchorPane layoutX="250.0" layoutY="103.0"
+			prefHeight="499.0" prefWidth="775.0"
+			style="-fx-background-color: #f4f4f4;">
+			<children>
+				<Label layoutX="92.0" layoutY="286.0" text="Feedback " />
+				<Button fx:id="postuler" layoutX="493.0"
+					layoutY="412.0" onAction="#PublishFeedback" text="Publish" />
+				<Button layoutX="611.0" layoutY="412.0"
+					mnemonicParsing="false" onAction="#Close" text="Fermer" />
+				<Label layoutX="173.0" layoutY="35.0" prefHeight="38.0"
+					prefWidth="282.0" text="Give as your Feedback " textFill="#0099ff">
+					<font>
+						<Font name="System Bold" size="26.0" />
+					</font>
+				</Label>
+				<TextArea fx:id="Feedback" layoutX="188.0"
+					layoutY="176.0" />
+				<Label fx:id="username" layoutX="455.0" layoutY="35.0"
+					prefHeight="38.0" prefWidth="282.0" textFill="#0099ff">
+					<font>
+						<Font name="System Bold" size="26.0" />
+					</font>
+				</Label>
+				<Label layoutX="85.0" layoutY="132.0" text="RentalID" />
+				<Label fx:id="rantelID" layoutX="188.0" layoutY="132.0" />
+			</children>
+		</AnchorPane>
+	</children>
+</AnchorPane>
